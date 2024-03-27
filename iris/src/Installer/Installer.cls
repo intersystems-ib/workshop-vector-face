@@ -39,12 +39,6 @@ ClassMethod Install() As %Status
         #; install manifest
         set sc = $$$ADDSC(sc,..Installer(.args))
 
-        set sqlCreatePerson = "CREATE TABLE Vectorface_Data.Person (name VARCHAR(50), description VARCHAR(1000), photo VECTOR(DECIMAL, 128))"
-        set statementCreatePerson = ##class(%SQL.Statement).%New()
-        set statusCreatePerson = statementCreatePerson.%Prepare(sqlCreatePerson)
-        if ($$$ISOK(statusCreatePerson)) {
-            set resultSetCreatePerson = statementCreatePerson.%Execute()
-        }
         set $namespace = "%SYS"
         kill p do ##class(Security.Users).Get("Admin",.p) set (p("PasswordNeverExpires"),p("AccountNeverExpires"))=1 do ##class(Security.Users).Modify("Admin",.p)
         kill p do ##class(Security.Users).Get("irisowner",.p) set (p("PasswordNeverExpires"),p("AccountNeverExpires"))=1 do ##class(Security.Users).Modify("irisowner",.p)

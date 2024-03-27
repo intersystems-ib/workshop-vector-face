@@ -37,6 +37,7 @@ RUN \
   if sc do ##class(Vectorface.Installer).Install() \
   zn "VECTORFACE" \
   set sc = $SYSTEM.OBJ.LoadDir("/opt/irisapp/src/Vectorface", "ck", , 1) \
+  do ##class(Vectorface.Utils.Manager).CreateTable() \
   zn "%SYS" \
   do ##class(Security.Applications).Import("/webapp.xml",.n) \
   # set production = "Vectorface.Production" \
