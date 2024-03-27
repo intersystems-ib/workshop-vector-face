@@ -37,6 +37,8 @@ RUN \
   if sc do ##class(Vectorface.Installer).Install() \
   zn "VECTORFACE" \
   set sc = $SYSTEM.OBJ.LoadDir("/opt/irisapp/src/Vectorface", "ck", , 1) \
+  zn "%SYS" \
+  do ##class(Security.Applications).Import("/webapp.xml",.n) \
   # set production = "Vectorface.Production" \
   # set ^Ens.Configuration("csp","LastProduction") = production \
   # do ##class(Ens.Director).SetAutoStart(production)
